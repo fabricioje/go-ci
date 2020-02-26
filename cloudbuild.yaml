@@ -1,10 +1,28 @@
 steps:
+  # see https://www.npmjs.com/package/editorconfig-checker
+  #- id: eclint
+  #  name: "e53e225/editorconfig-checker"
 
-- id: "Building image from Dockerfile.prod"
-  name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/go-ci','-f','/Dockerfile','.'] # O $SHORT_SHA é para gerar um nome de imagem diferente para cada imagem baseado no commit  
+  - id: go_version
+    name: "gcr.io/cloud-builders/go"
+    args: ["version"]
+    env: ["GOPATH=."]
 
-- id: "Pushing image"  
-  name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/go-ci:']
+  - id: go_linter
+    name: "golangci/golangci-lint"
+    args: ["golangci-lint","run"]
 
+  - id: go_test
+    name: "gcr.io/cloud-builders/go"
+    args: ["test","."]
+    env: ["GOPATH=."]
+
+  - id: go_security
+    name: "securego/gosec"
+    args: ["."]
+    env: ["GOPATH=."]
+
+  - id: your_step_here
+    name: "gcr.io/cloud-builders/go"
+    args: ["run","."]
+    env: ["GOPATH=."]
