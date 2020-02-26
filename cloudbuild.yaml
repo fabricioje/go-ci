@@ -3,29 +3,6 @@ steps:
   #- id: eclint
   #  name: "e53e225/editorconfig-checker"
 
-  - id: go_version
-    name: "gcr.io/cloud-builders/go"
-    args: ["version"]
-    env: ["GOPATH=."]
-
-  - id: go_linter
-    name: "golangci/golangci-lint"
-    args: ["golangci-lint","run"]
-
-  - id: go_test
-    name: "gcr.io/cloud-builders/go"
-    args: ["test","."]
-    env: ["GOPATH=."]
-
-  #- id: go_security
-  #  name: "securego/gosec"
-  #  args: ["."]
-  #  env: ["GOPATH=."]
-
-  - id: your_step_here
-    name: "gcr.io/cloud-builders/go"
-    args: ["run","."]
-    env: ["GOPATH=."]
 
   - id: "Building image from Dockerfile"
     name: 'gcr.io/cloud-builders/docker'
