@@ -2,9 +2,9 @@ steps:
 
 - id: "Building image from Dockerfile.prod"
   name: 'gcr.io/cloud-builders/docker'
-  args: ['build','-t','gcr.io/$PROJECT_ID/go-ci:$SHORT_SHA','-f','/Dockerfile','.'] # O $SHORT_SHA é para gerar um nome de imagem diferente para cada imagem baseado no commit  
+  args: ['build','-t','gcr.io/go-ci:$SHORT_SHA','-f','/Dockerfile','.'] # O $SHORT_SHA é para gerar um nome de imagem diferente para cada imagem baseado no commit  
 
 - id: "Pushing image"  
   name: 'gcr.io/cloud-builders/docker'
-  args: ['push','gcr.io/$PROJECT_ID/go-ci:$SHORT_SHA']
+  args: ['push','gcr.io/go-ci:$SHORT_SHA']
 
