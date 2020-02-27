@@ -17,7 +17,7 @@ steps:
   - id: your_step_here
     name: "gcr.io/cloud-builders/go"
     args: ["run","main"]
-    env: ["GOPATH=."]
+    env: ["GOPATH=src"]
 
   - id: "Building image from Dockerfile"
     name: 'gcr.io/cloud-builders/docker'
