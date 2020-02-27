@@ -1,20 +1,20 @@
 steps:
 
-  - id: go_version
+  - id: Versão go
     name: "gcr.io/cloud-builders/go"
     args: ["version"]
     env: ["GOPATH=."]
 
-  - id: go_linter
+  - id: Linter go
     name: "golangci/golangci-lint"
     args: ["golangci-lint","run"]
 
-  - id: go_test
+  - id: Teste go
     name: "gcr.io/cloud-builders/go"
     args: ["test","."]
     env: ["GOPATH=."]
 
-  - id: your_step_here
+  - id: Roda o arquivo go
     name: "gcr.io/cloud-builders/go"
     args: ["run","."]
     env: ["GOPATH=."]
