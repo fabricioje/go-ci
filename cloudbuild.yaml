@@ -11,13 +11,13 @@ steps:
 
   - id: go_test
     name: "gcr.io/cloud-builders/go"
-    args: ["test","src/."]
+    args: ["test","."]
     env: ["GOPATH=."]
 
   - id: your_step_here
     name: "gcr.io/cloud-builders/go"
-    args: ["run","main"]
-    env: ["GOPATH=src"]
+    args: ["run","."]
+    env: ["GOPATH=."]
 
   - id: "Building image from Dockerfile"
     name: 'gcr.io/cloud-builders/docker'
